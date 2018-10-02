@@ -1,13 +1,19 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
+import login from './components/spider/Login'
 export default {
-  name: 'App'
+  name: 'App',
+  components:{login},
+  data () {
+    return {
+
+    }
+  }
 }
 </script>
 
@@ -19,5 +25,15 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+html{
+  margin:0px;
+  padding:0px;
+  font-size:12px;
+  background:#eee
+}
+body{
+  margin:0px;
+  padding:0px;
 }
 </style>
