@@ -2,7 +2,9 @@
     <div class="home">
         <HomeHeader/>
         <HomeMenu />
-        <router-view></router-view>
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
     </div>
 </template>
 
@@ -13,9 +15,12 @@ import HomeHeader from '@/components/spider/HomeHeader'
 import HomeMenu from '@/components/spider/Homemenu'
 import Claim from '@/components/spider/Claim'
 import Overview from '@/components/spider/Overview'
+import Forecast from '@/components/spider/Forecast'
+import Timesheet from '@/components/spider/Timesheet'
+import Elearning from '@/components/spider/Elearning'
 export default {
   name: 'home',
-  components: {HomeHeader, HomeMenu, Overview, Claim},
+  components: {HomeHeader, HomeMenu, Overview, Claim, Timesheet, Forecast, Elearning},
   data () {
     return {
       

@@ -3,6 +3,9 @@
         <div class="home-header-title">
             <span>ODC</span>
         </div>
+        <div class="home-header-time">
+            <span>{{weekStart}} ~ {{weekEnd}}</span>
+        </div>
         <div class="home-header-logininfo">
             <span class="home-header-logininfo-name">Bin</span>
             <div class="home-header-logininfo-menu">
@@ -15,11 +18,13 @@
 <script>
 import {LOGINTITLE} from '../../static/index.js'
 import moment from 'moment'
+import week from '../common/time.js'
 export default {
   name: 'homeheader',
   data () {
     return {
-      
+      weekStart: week.weekStartDate,
+      weekEnd: week.weekEndDate
     }
   },
   computed:{
@@ -61,9 +66,24 @@ export default {
     color:#fff;
 }
 .home-header-logininfo{
-  order:2;
+  order:3;
   height:100%;
   margin-right:1rem;
+}
+.home-header-time{
+    order:2;
+    color:#fff;
+    height:100%;
+}
+.home-header-time span{
+    vertical-align:middle;
+    line-height:5rem;
+    text-align: center;
+    display:inline-block;
+    font-size:1.5rem;
+    font-weight: 400;
+    cursor: pointer;
+    color:#fff;
 }
 .home-header-logininfo-name{
     width: 4rem;

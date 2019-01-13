@@ -42,6 +42,47 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
       poll: config.dev.poll,
+    },
+    before(app){
+      app.post("/claim/add", (req, res) => {
+        res.json({
+          responseHeader: {
+            state:200
+          },
+          data: {
+            message:'test'
+          }
+        });
+
+      }),
+      app.post("/common/login", (req, res) => {
+        res.json({
+          responseHeader: {
+            state:200
+          },
+          userInfo: {
+            userId: 'pbpan@cn.ibm.com',
+            name: 'alex',
+            admin: '0',
+            type: 'AC',
+            token: '5199f8cd-df2d-d50a-0878-d758f24527bf'
+          }
+        })
+      }),
+      app.post("/common/overview", (req, res) => {
+        res.json({
+          responseHeader: {
+            state:200
+          },
+          overview: {
+            claim: true,
+            timesheet: true,
+            forecast: false,
+            Elearning: false,
+            token: '5199f8cd-df2d-d50a-0878-d758f24527bf'
+          }
+        })
+      })
     }
   },
   plugins: [

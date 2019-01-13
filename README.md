@@ -30,7 +30,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 ## 技术栈
 ```
-基于vue2 + vue-router + ES6 + less来实现此项目，使用webpack打包。
+基于vue2 + vue-router + vuex + ES6 来实现此项目，使用webpack实现工程化。
 ```
 ## 如何加入我们
 ```
@@ -41,7 +41,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 ```
 一个重要的事情值得注意，关注点分离不等于文件类型分离。在现代 UI 开发中，我们已经发现相比于把代码库分离成三个大的层次并将其相互交织起来，把它们划分为松散耦合的组件再将其组合起来更合理一些。在一个组件里，其模板、逻辑和样式是内部耦合的，并且把他们搭配在一起实际上使得组件更加内聚且更可维护。
 ```
-### 项目目录说明
+### 项目目录说明(废弃)
 ```
 .
 |-- config                           // 项目开发环境配置

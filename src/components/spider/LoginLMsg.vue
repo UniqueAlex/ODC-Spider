@@ -4,20 +4,20 @@
         <span class="login-title">{{loginTitle}}</span>
         <div class="login-input">
           <span class="input input--nao">
-            <input class="input__field input__field--nao" type="text" />
+            <input class="input__field input__field--nao" type="text" v-model="username"/>
             <label class="input__label input__label--nao" for="input-1">
               <span class="input__label-content input__label-content--nao">Username</span>
             </label>
           </span>
           <span class="input input--nao">
-            <input class="input__field input__field--nao" type="password" />
+            <input class="input__field input__field--nao" type="password" v-model="password"/>
             <label class="input__label input__label--nao" for="input-1">
               <span class="input__label-content input__label-content--nao">Password</span>
             </label>
           </span>
         </div>
         <div class="login-btn">
-          <button class="login-btn-button" @click="goHomePage">
+          <button class="login-btn-button" @click="login">
             <span>LOGIN</span>
           </button>
         </div>
@@ -27,12 +27,15 @@
 </template>
 
 <script>
-import {LOGINTITLE} from '../../static/index.js'
+import {text} from '../../static/index.js'
+import sha256 from 'js-sha256'
 export default {
   name: 'LoginLMsg',
   data () {
     return {
-      loginTitle: LOGINTITLE
+      loginTitle: text.login.LOGINTITLE,
+      username: '',
+      password: ''
     }
   },
   mounted(){
@@ -58,9 +61,34 @@ export default {
       } 
   },
   methods:{
-     goHomePage(){
-       this.$router.push('./home');
-     }
+    login(){
+      let username = this.username.trim();
+      let password = this.password;
+      if(username && password){
+        let password_sha = sha256(password);
+        // let uuid = uuid(); 让后台来写
+        console.log(password)
+        let loginInfo = {
+          username: username,
+          password: password_sha
+        }
+        this.$store.dispatch('login', loginInfo).then( response => {
+          this.$router.push('./home');
+          // 这里为什么输出为undefined?
+          // console.log(this.$store.state.userInfo)
+        });
+      } else {
+        alert('pls enter the username and password');
+      }
+      this.username = '';
+      this.password = '';
+    },
+    S4() {
+        return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+    },
+    uuid() {
+        return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+    }
   }
 }
 </script>
